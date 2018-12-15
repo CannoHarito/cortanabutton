@@ -1,0 +1,16 @@
+{
+  "name": "cortanabutton",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^2.0.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CannoHarito",
+  "license": "MIT",
+  "description": ""
+}
