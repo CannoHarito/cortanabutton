@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "main": "main.js",
   "dependencies": {
-    "electron": "^2.0.14"
+    "menubar": "^5.2.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron-packager": "^13.0.1",
+    "electron-prebuilt": "^1.4.13"
+  },
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-packager ./ cortanabutton --platform=win32 --arch=x64 --overwrite --prune --asar --out=build"
   },
   "author": "CannoHarito",
   "license": "MIT",
