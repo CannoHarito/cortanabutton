@@ -1,8 +1,10 @@
+const ICON = __dirname + '/images/icon.png'
+const ICONFAILE = __dirname + '/images/iconFaile.png'
 const { ipcMain, globalShortcut } = require('electron')
 const exec = require('child_process').exec
 const menubar = require('menubar')
 
-const mb = menubar()
+const mb = menubar({ icon: ICONFAILE })
 
 mb.on('ready', () => {
   console.log('app is ready')
@@ -23,7 +25,9 @@ mb.on('ready', () => {
     })
   })
 
-  if (!ret) {
+  if (ret) {
+    mb.tray.setImage(ICON)
+  } else {
     console.log('registration failed')
   }
 
