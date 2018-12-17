@@ -39,6 +39,14 @@ mb.on('ready', () => {
     globalShortcut.unregisterAll()
   })
 
+  mb.app.on('window-all-closed', () => {
+    // Stop quitting app.
+  })
+
+})
+
+mb.on('after-hide', () => {
+  mb.window.close()
 })
 
 ipcMain.on('terminate', function terminate() {
