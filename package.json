@@ -17,5 +17,9 @@
   },
   "author": "CannoHarito",
   "license": "MIT",
-  "description": "Use Media key as shortcut key for Cortana start listening."
+  "description": "Use Media key as shortcut key for Cortana start listening.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CannoHarito/cortanabutton"
+  }
 }
