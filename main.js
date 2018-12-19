@@ -1,38 +1,70 @@
-const { app, globalShortcut } = require('electron')
-// const hook = require('ll-keyboard-hook-win');// "ll-keyboard-hook-win": "^3.0.0", 
-// const ks = require('node-key-sender');//"node-key-sender": "1.0.9"
+const ICON = __dirname + '/images/icon.png'
+const ICONFAILE = __dirname + '/images/iconFaile.png'
+const { ipcMain, globalShortcut } = require('electron')
 const exec = require('child_process').exec
+const menubar = require('menubar')
+const Store = require('electron-store')
+const store = new Store()
+const mb = menubar({ icon: ICONFAILE, height: 250 })
+const state = { registered: false }
 
-app.on('ready', () => {
-  // Register a 'CommandOrControl+X' shortcut listener.
-  const ret = globalShortcut.register('MediaPreviousTrack', () => {
-    console.log('MediaPreviousTrack is pressed')
-    // ks.sendCombination(["windows", "c"]);
+mb.on('ready', () => {
+  console.log('app is ready')
+  mb.app.on('will-quit', () => {
+    // Unregister all shortcuts.
+    globalShortcut.unregisterAll()
+  })
+
+  mb.app.on('window-all-closed', () => {
+    // Stop quitting app.
+  })
+
+  state.keycode = store.get('keycode', false)
+  if (state.keycode) {
+    setGlobalShortcut(state.keycode)
+  }
+  if (!state.registered) mb.showWindow()
+})
+
+mb.on('after-hide', () => {
+  // release mb.window resource
+  mb.window.close()
+})
+// mb.on('after-create-window', () => {
+//   mb.window.openDevTools()
+// })
+ipcMain.on('terminate', () => {
+  mb.app.quit()
+})
+ipcMain.on('state', (e) => {
+  e.sender.send('stateReply', state)
+})
+ipcMain.on('keycode', (e, newKeycode) => {
+  console.log('new keycode is ' + newKeycode)
+  state.keycode = newKeycode
+  store.set('keycode', newKeycode)
+  delGlobalShortcut()
+  if (newKeycode) setGlobalShortcut(newKeycode)
+  e.sender.send('stateReply', state)
+})
+const delGlobalShortcut = (keycode) => {
+  state.registered = false
+  mb.tray.setImage(ICONFAILE)
+  if (keycode) globalShortcut.unregister(keycode)
+  else globalShortcut.unregisterAll()
+}
+const setGlobalShortcut = (keycode) => {
+  // Register a 'keycode' shortcut listener.
+  const ret = globalShortcut.register(keycode, (e) => {
     exec('start ms-cortana://Reactive/?ListeningMode=True', (error, stdout, stderr) => {
-      if (stdout) {
-        console.log('stdout: ' + stdout)
-      }
-      if (stderr) {
-        console.log('stderr: ' + stderr)
-      }
-      if (error !== null) {
-        console.log('Exec error: ' + error)
-      }
+      if (error) console.error(error)
+      if (stdout) console.log(stdout)
     })
   })
-  // hook.on('down', 'MediaPreviousTrack', () => {
-  //   console.log('MediaPreviousTrack is pressde with hock')
-  // })
-  if (!ret) {
+  if (ret) {
+    mb.tray.setImage(ICON)
+  } else {
     console.log('registration failed')
   }
-
-  // Check whether a shortcut is registered.
-  console.log(globalShortcut.isRegistered('MediaPreviousTrack'))
-})
-
-app.on('will-quit', () => {
-  // Unregister all shortcuts.
-  globalShortcut.unregisterAll()
-  // hock.unbind()
-})
+  state.registered = ret
+}

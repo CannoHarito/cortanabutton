@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "main": "main.js",
   "dependencies": {
-    "electron": "^2.0.14"
+    "electron-store": "^2.0.0",
+    "menubar": "^5.2.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron-packager": "^13.0.1",
+    "electron-prebuilt": "^1.4.13"
+  },
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-packager ./ cortanabutton --platform=win32 --arch=x64 --overwrite --prune --asar --out=build --icon=images/icon.ico"
   },
   "author": "CannoHarito",
   "license": "MIT",
-  "description": ""
+  "description": "Use Media key as shortcut key for Cortana start listening."
 }
