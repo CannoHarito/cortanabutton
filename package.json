@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "dependencies": {
+    "electron-store": "^2.0.0",
     "menubar": "^5.2.3"
   },
   "devDependencies": {

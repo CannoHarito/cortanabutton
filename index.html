@@ -1,12 +1,20 @@
 <html>
 
 <head>
-    <title>Example App</title>
+    <meta charset="UTF-8">
+    <title>Cortanabutton</title>
 </head>
 
 <body>
-    hello world
     <button id="btnExit">Exit</button>
+    <select id="slcKeycode">
+        <option value="" selected>Select One ...</option>
+        <option value="MediaNextTrack">MediaNextTrack</option>
+        <option value="MediaPreviousTrack">MediaPreviousTrack</option>
+        <option value="MediaStop">MediaStop</option>
+        <option value="MediaPlayPause">MediaPlayPause</option>
+    </select>
+    <span id="keycodeState"></span>
     <script type="text/javascript" src="./app.js"></script>
 </body>
 
