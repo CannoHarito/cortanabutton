@@ -2,19 +2,24 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/flaticon.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/app.css">
     <title>Cortanabutton</title>
 </head>
 
 <body>
-    <button id="btnExit">Exit</button>
+    <h1>
+        <div><img src="images/icon.png" />Cortanabutton</div>
+        <div><i id="btnExit" class="flaticon-power"></i></div>
+    </h1>
     <select id="slcKeycode">
         <option value="" selected>Select One ...</option>
-        <option value="MediaNextTrack">MediaNextTrack</option>
-        <option value="MediaPreviousTrack">MediaPreviousTrack</option>
-        <option value="MediaStop">MediaStop</option>
-        <option value="MediaPlayPause">MediaPlayPause</option>
+        <option value="MediaNextTrack">&#xf102;MediaNextTrack</option>
+        <option value="MediaPreviousTrack">&#xf103;MediaPreviousTrack</option>
+        <option value="MediaStop">&#xf101;MediaStop</option>
+        <option value="MediaPlayPause">&#xf100;MediaPlayPause</option>
     </select>
-    <span id="keycodeState"></span>
+    <p id="keycodeState"></p>
     <script type="text/javascript" src="./app.js"></script>
 </body>
 

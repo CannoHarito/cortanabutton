@@ -5,7 +5,7 @@ const exec = require('child_process').exec
 const menubar = require('menubar')
 const Store = require('electron-store')
 const store = new Store()
-const mb = menubar({ icon: ICONFAILE })
+const mb = menubar({ icon: ICONFAILE, height: 250 })
 const state = { registered: false }
 
 mb.on('ready', () => {
@@ -30,7 +30,9 @@ mb.on('after-hide', () => {
   // release mb.window resource
   mb.window.close()
 })
-
+// mb.on('after-create-window', () => {
+//   mb.window.openDevTools()
+// })
 ipcMain.on('terminate', () => {
   mb.app.quit()
 })
