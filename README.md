@@ -1,4 +1,4 @@
-![icon](images/icon.png)
+![icon](images/icon256x256.png)
 
 # cortanabutton
 Media KeyにCortanaの聞き取り開始を割り当てる常駐アプリ。
@@ -9,8 +9,11 @@ BluetoothヘッドセットをWindows10にて"再生:既定のデバイス"と�
 * メディア再生ソフトが既に起動している場合など、すでにそのMedia Keyが使用されている時は割り当てに失敗する。メディア再生ソフトを終了してからリトライすればよい。
 * Grooveミュージックと同時使用できない。GrooveミュージックはAVRCPのイベントを直接受け取る(？)ため、キーボード入力のイベントが発生しなくなる。
 
-## Setup
-セットアップ方法を書く。用意するハードウェアとソフトウェアをセットアップするためのコマンドを記載する
+## Installation
+下記より最新版のzipファイルをダウンロードし、好きな位置に展開してください。
+
+https://github.com/CannoHarito/cortanabutton/releases
+
 
 ## Usage
 * cortanabutton.exeを起動すると、タスクトレイにアイコンが表示され、初回起動時は設定ウィンドウが出る。
@@ -21,6 +24,15 @@ BluetoothヘッドセットをWindows10にて"再生:既定のデバイス"と�
 
 ![screenshot](images/screenshot1.png)
 ![screenshot](images/screenshot2.png)
+
+## Release
+
+```sh
+yarn install
+yarn run build
+```
+
+The build will be in `build/` dir.
 
 ## Licence
 This software is released under the MIT License, see LICENSE.

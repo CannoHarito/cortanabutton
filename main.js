@@ -5,7 +5,7 @@ const exec = require('child_process').exec
 const menubar = require('menubar')
 const Store = require('electron-store')
 const store = new Store()
-const mb = menubar({ icon: ICONFAILE, height: 250 })
+const mb = menubar({ icon: ICON, height: 250 })
 const state = { registered: false }
 
 mb.on('ready', () => {
@@ -19,6 +19,7 @@ mb.on('ready', () => {
     // Stop quitting app.
   })
 
+  delGlobalShortcut()
   state.keycode = store.get('keycode', false)
   if (state.keycode) {
     setGlobalShortcut(state.keycode)
