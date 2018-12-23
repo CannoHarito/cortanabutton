@@ -1,4 +1,4 @@
-![icon](images/icon256x256.png)
+![icon](images/icon@4x.png)
 
 # cortanabutton
 Media KeyにCortanaの聞き取り開始を割り当てる常駐アプリ。
