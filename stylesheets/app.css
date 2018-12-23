@@ -12,8 +12,9 @@ select,button{
     font-size: 20px;
 }
 h1{
-    background-color: cadetblue;
+    background-color: gray;
     height: 46px;
+    margin-bottom: 5px;
 }
 h1 div:first-child{
     float: left;
@@ -26,6 +27,7 @@ h1 div:last-child{
 img{
     padding:3px;
     vertical-align: bottom;
+    max-height: 40px;
 }
 #btnExit::before{
     font-size: 30px;
@@ -33,4 +35,5 @@ img{
 p{
     padding:5px;
     box-sizing: border-box;
+    margin:0;
 }
